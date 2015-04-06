@@ -1,0 +1,33 @@
+* { padding: 0; margin: 0; box-sizing: border-box; }
+body {
+    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #419aff;
+}
+a:hover { color: #41ccff; }
+
+header {
+    text-align: center;
+    background: #eee;
+    padding: 50px 0 20px 0;
+}
+header p { margin: 12px; }
+
+section {
+    margin-top: 30px;
+}
+#box {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    #box { width: 350px; height: 350px; }
+}
