@@ -1,9 +1,11 @@
 * { padding: 0; margin: 0; box-sizing: border-box; }
+
 body {
     font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     color: #333;
 }
+
 a {
     text-decoration: none;
     cursor: pointer;
@@ -18,14 +20,22 @@ header {
 }
 header p { margin: 12px; }
 
-section {
-    margin-top: 30px;
-}
 #box {
     width: 500px;
     height: 500px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
+    margin: 30px auto 0 auto;
+    border: 10px dashed #ccc;
+    position: relative;
+}
+#box section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 30%;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px) {
