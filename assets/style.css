@@ -27,6 +27,9 @@ header p { margin: 12px; }
     border: 10px dashed #ccc;
     position: relative;
 }
+#box.active {
+    border-color: green;
+}
 #box section {
     position: absolute;
     top: 0;
