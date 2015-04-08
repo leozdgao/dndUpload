@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "drag, drop and upload",
   "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/leozdgao/dndUpload.git"

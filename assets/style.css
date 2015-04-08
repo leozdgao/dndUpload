@@ -20,12 +20,16 @@ header {
 }
 header p { margin: 12px; }
 
-#box {
-    width: 500px;
-    height: 500px;
+.content {
     margin: 30px auto 0 auto;
+}
+
+#box {
+    width: 450px;
+    height: 450px;
     border: 10px dashed #ccc;
     position: relative;
+    float: left;
 }
 #box.active {
     border-color: green;
@@ -38,9 +42,34 @@ header p { margin: 12px; }
     right: 0;
     margin: auto;
     height: 30%;
+    width: 80%;
     text-align: center;
+}
+#box .progress {
+    margin-top: 20px;
+}
+#box .progress .backdrop {
+    transition: width .5s;
+}
+
+.list-group {
+    padding-left: 0;
+    float: left;
+    width: 280px;
+    list-style: none;
+    margin-left: 20px;
+}
+.list-group .item {
+    margin-bottom: 5px;
+}
+.list-group .item .progress {
+    margin-top: 5px;
 }
 
 @media screen and (max-width: 768px) {
-    #box { width: 350px; height: 350px; }
+    #box { width: 350px; height: 350px; margin: 0 auto; float: none;}
+    .list-group { width: 350px; margin: 20px auto 0; float: none; }
+}
+@media screen and (min-width: 768px) {
+    .content { width: 750px; }
 }

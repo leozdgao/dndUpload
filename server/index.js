@@ -1,16 +1,28 @@
+var fs = require('fs'),
+    config = require('./config.json');
+
+var uploadpath = config["upload_dir"];
+if(!uploadpath || !fs.existsSync(uploadpath)) {
+    console.log('Please provide a existed upload directory to the config \'upload_dir\'.');
+    process.exit(0); // exit
+}
+
 var formidable = require('formidable'),
     http = require('http'),
+    path = require('path'),
     util = require('util'),
     static = require('node-static');
 
-var file = new static.Server('../assets');
+var file = new static.Server(path.resolve(__dirname, '../assets'));
 
 http.createServer(function(req, res) {
-    console.log(req.method); console.log(req.url);
+
     if(req.url === '/upload' && req.method.toLowerCase() === 'post') {
         // handle upload
         var form = new formidable.IncomingForm();
-        form.uploadDir = 'D:\\temp';
+        
+        form.uploadDir = uploadpath;
+
         form.parse(req, function(err, fields, files) {
             console.log('cb');
             res.end();

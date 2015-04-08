@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="http://myjslib.qiniudn.com/fonts/roboto/roboto.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./progress.css">
     <title>dndUpload</title>
 </head>
 <body>
@@ -12,13 +13,16 @@
         <p>Drag your file and drop it to the box, it will be uploaded!</p>
         <a href="https://github.com/leozdgao/dndUpload">View on Github</a>
     </header>
-    <div id="box">
-        <section>
-            <h2>Drag and Drop!</h2>
-            <progress></progress>
-            <p id="message"></p>
-        </section>
-    </div>
+    <section class="content">
+        <div id="box">
+            <section>
+                <h2>Drag and Drop!</h2>
+            </section>
+        </div>
+        <ul class="list-group"></ul>
+    </section>
+    
+    <script src="./progress.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>
