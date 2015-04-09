@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var box = document.getElementById('box');
     var message = document.getElementById('message');
     var listgroup = document.querySelector('.list-group');
+    var em = document.querySelector('.list-group .empty');
 
     // let drop work
     box.addEventListener('dragover', function(e) {
@@ -23,11 +24,16 @@ document.addEventListener('DOMContentLoaded', function(e) {
     // handle drop
     box.addEventListener('drop', function(e) {
         e.preventDefault();
+        counter = 0;
         box.classList.remove('active');
 
         var dt = e.dataTransfer;
 
         if(dt.files.length > 0) {
+            if(!/hide/.test(em.className)) {
+                em.classList.add('hide');
+                listgroup.classList.add('borderred');
+            } 
 
             // upload every files
             [].forEach.call(dt.files, function(file) {
@@ -38,11 +44,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 // append list-item
                 var item = document.createElement('li');
                 item.className = 'item';
-                var entry = document.createElement('p');
-                entry.textContent = file.name;
+                var entry = document.createElement('div');
+                entry.className = 'clearfix';
+                var filename = document.createElement('span');
+                filename.className = 'filename';
+                filename.textContent = file.name;
                 var message = document.createElement('span');
-                message.style.float = 'right';
+                message.className = 'status';
                 entry.appendChild(message);
+                entry.appendChild(filename);
                 item.appendChild(entry);
                 var progressEle = document.createElement('div');
                 progressEle.className = 'progress';
@@ -61,11 +71,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 };
                 xhr.onload = function(e) {
                     progress.value = 100; // ensure the progress fulfilled
+                    message.classList.add('success');
+                    message.textContent = 'Uploaded!';
                 };
                 xhr.onerror = function(e) {
-                    console.log(e);
+                    message.classList.add('danger');
+                    message.textContent = 'Failed.';
                 };
-                xhr.send(formData);    
+                xhr.send(formData);
             });
         };
     });

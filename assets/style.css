@@ -55,15 +55,44 @@ header p { margin: 12px; }
 .list-group {
     padding-left: 0;
     float: left;
-    width: 280px;
+    width: 250px;
+    
     list-style: none;
-    margin-left: 20px;
+    margin-left: 50px;
+}
+.list-group.borderred {
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 .list-group .item {
-    margin-bottom: 5px;
+    padding: 5px;
+    border-top: 1px solid #eee;
+}
+.list-group .item:first-child {
+    border-top: none;
 }
 .list-group .item .progress {
     margin-top: 5px;
+}
+
+.filename {
+    display: block;
+    margin-right: 80px;
+    word-wrap: break-word;
+}
+
+.status {
+    display: block;
+    width: 80px;
+    float: right;
+    text-align: right;
+    font-size: 0.8em;
+}
+.status.success {
+    color: green;
+}
+.status.danger {
+    color: red;
 }
 
 @media screen and (max-width: 768px) {
@@ -72,4 +101,15 @@ header p { margin: 12px; }
 }
 @media screen and (min-width: 768px) {
     .content { width: 750px; }
+    .list-group { height: 450px; overflow: auto;}
+}
+
+.clearfix:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+.hide {
+    display: none;
 }

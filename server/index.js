@@ -24,21 +24,21 @@ http.createServer(function(req, res) {
         form.uploadDir = uploadpath;
 
         form.parse(req, function(err, fields, files) {
-            console.log('cb');
+            // response
             res.end();
         });
 
         form.on('progress', function() {
-            console.log('progress');
+            // console.log('progress');
         });
         form.on('fileBegin', function(name, file) {
-            console.log(file);
+            // console.log(file);
         });
         form.on('file', function() {
-            console.log('file');
+            // console.log('file');
         });
         form.on('end', function() {
-            console.log('end');
+            // console.log('end');
         });
     }
     else {
