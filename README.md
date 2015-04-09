@@ -12,3 +12,19 @@ Here is a snapshot:
 ![Demo](http://7sbm5t.com1.z0.glb.clouddn.com/dnd_upload.PNG)
 
 Drag the file or files to the box, and drop, thery will be upload!
+
+### Installation
+
+You need to install `node.js` first and use this command:
+
+```
+npm install
+```
+
+Then configurate the uploading destination folder in the `server/config.json` with key `upload_dir`.
+
+You can start the app by: 
+
+```
+npm start
+```
