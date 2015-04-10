@@ -1,43 +1,22 @@
 // IE9+ event, IE10+ XMLHttpRequest 2.0
-document.addEventListener('DOMContentLoaded', function(e) {
+// document.addEventListener('DOMContentLoaded', function(e) {
+(function(scope){
     var box = document.getElementById('box');
     var message = document.getElementById('message');
     var listgroup = document.querySelector('.list-group');
     var em = document.querySelector('.list-group .empty');
     var uploader = document.getElementById('uploader');
+    var cross = document.querySelector('.cross');
 
-    // let drop work
-    box.addEventListener('dragover', function(e) {
-        e.preventDefault();
-    });
-
-    // effect
-    var counter = 0;
-    box.addEventListener('dragenter', function(e) {
-        counter++;
-        box.classList.add('active');
-    });
-    box.addEventListener('dragleave', function(e) {
-        counter--;
-        if(!counter) box.classList.remove('active');
-    });
-
-    // handle drop
-    box.addEventListener('drop', function(e) {
-        e.preventDefault();
-        counter = 0;
-        box.classList.remove('active');
-
-        var dt = e.dataTransfer;
-
-        if(dt.files.length > 0) {
+    function upload(files) {
+        if(files.length > 0) {
             if(!/hide/.test(em.className)) {
                 em.classList.add('hide');
                 listgroup.classList.add('borderred');
             } 
 
             // upload every files
-            [].forEach.call(dt.files, function(file) {
+            [].forEach.call(files, function(file) {
                 var xhr = new XMLHttpRequest();
                 var formData = new FormData();
                 formData.append('file', file, file.name);
@@ -62,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 listgroup.insertBefore(item, listgroup.childNodes[0]);
 
                 // init progress bar
-                var progress = new Progress(progressEle);
+                var progress = new scope.Progress(progressEle);
 
                 xhr.open('POST', '/upload'); // async default
                 xhr.upload.onprogress = function(e) {
@@ -81,6 +60,45 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 };
                 xhr.send(formData);
             });
-        };
-    });
-});
+        }
+    }
+
+    // main entry point
+    scope.run = function() {
+        // let drop work
+        box.addEventListener('dragover', function(e) {
+            e.preventDefault();
+        });
+
+        // effect
+        var counter = 0;
+        box.addEventListener('dragenter', function(e) {
+            counter++;
+            box.classList.add('active');
+        });
+        box.addEventListener('dragleave', function(e) {
+            counter--;
+            if(!counter) box.classList.remove('active');
+        });
+
+        // handle drop
+        box.addEventListener('drop', function(e) {
+            e.preventDefault();
+            counter = 0;
+            box.classList.remove('active');
+
+            upload(e.dataTransfer.files);
+        });
+
+        // handle uploader click
+        cross.addEventListener('click', function() {
+            // simulate click
+            uploader.click();
+        });
+
+        //upload files after select
+        uploader.addEventListener('change', function() {
+            upload(uploader.files);
+        });
+    };
+})(window.App || (window.App = {}));

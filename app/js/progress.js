@@ -1,4 +1,4 @@
-(function() {
+(function(scope) {
 	var Progress = function(elem) {
 		// let the element become a progress bar
 		if(!/progress/.test(elem.className)) throw new Error('The element should with class \'progress\' which is defined by hershey');
@@ -21,5 +21,5 @@
 		});
 	};
 
-	window.Progress = Progress;
-})();
+	scope.Progress = Progress;
+})(window.App || (window.App = {}));

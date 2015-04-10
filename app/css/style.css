@@ -82,6 +82,9 @@ header p { margin: 12px; }
 .cross:hover,.cross:hover:before, .cross:hover:after {
     border-color: green;
 }
+.cross:active, .cross:active:before, .cross:active:after {
+    border-color: #00DE16;
+}
 /* box style END */
 
 /* list group style START */
