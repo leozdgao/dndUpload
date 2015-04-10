@@ -24,6 +24,7 @@ header p { margin: 12px; }
     margin: 30px auto 0 auto;
 }
 
+/* box style START */
 #box {
     width: 450px;
     height: 450px;
@@ -52,6 +53,38 @@ header p { margin: 12px; }
     transition: width .5s;
 }
 
+.file-select {
+    margin-top: 10px;
+}
+
+.cross {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    margin: 5px auto 0;
+    border: 3px dotted #ccc;
+    border-radius: 100%;
+}
+.cross:before, .cross:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    border: 2px solid #ccc;
+    width: 15px;
+    top:50%;
+    left:50%;
+    margin-top: -1px;
+    margin-left: -9px;
+}
+.cross:after {
+    transform: rotate(90deg);
+}
+.cross:hover,.cross:hover:before, .cross:hover:after {
+    border-color: green;
+}
+/* box style END */
+
+/* list group style START */
 .list-group {
     padding-left: 0;
     float: left;
@@ -94,6 +127,8 @@ header p { margin: 12px; }
 .status.danger {
     color: red;
 }
+/* list group style END */
+
 
 @media screen and (max-width: 768px) {
     #box { width: 350px; height: 350px; margin: 0 auto; float: none;}

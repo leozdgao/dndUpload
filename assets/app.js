@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var message = document.getElementById('message');
     var listgroup = document.querySelector('.list-group');
     var em = document.querySelector('.list-group .empty');
+    var uploader = document.getElementById('uploader');
 
     // let drop work
     box.addEventListener('dragover', function(e) {
