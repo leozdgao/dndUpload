@@ -23,6 +23,12 @@ npm install
 
 Then configurate the uploading destination folder in the `server/config.json` with key `upload_dir`.
 
+After that, you need to build the assets by gulp task:
+
+```
+gulp release
+```
+
 You can start the app by: 
 
 ```
