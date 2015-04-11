@@ -9,7 +9,7 @@ There is a server which implemented by node.js, which use `node-static` and `for
 
 Here is a snapshot:
 
-![Demo](http://7sbm5t.com1.z0.glb.clouddn.com/dnd_upload.PNG)
+![Demo](http://7sbm5t.com1.z0.glb.clouddn.com/dnd_upload.png)
 
 Drag the file or files to the box, and drop, thery will be upload!
 
